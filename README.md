@@ -23,11 +23,11 @@ The JupyterLab distribution ships with a lot of built-in functionality, but we w
 
 Install JupyterLab if you do not have it
 
-    $ pip3 install --user jupyterlab
+    $ pip3 install jupyterlab
 
 Install the `ipympl` module
 
-    $ pip3 install --user ipympl
+    $ pip3 install ipympl
 
 Install `nodejs` and `npm` libraries with one of the two following options
 
@@ -52,4 +52,6 @@ Install the Matplotlib widget extension
 
 **(Optional)** Install the IPython magics for generating figures with TikZ
 
+    $ sudo apt install imagemagick
+    $ sudo apt install pdf2svg
     $ pip3 install git+git://github.com/mkrphys/ipython-tikzmagic.git
