@@ -112,7 +112,7 @@ def mol_main(*, L, a, N, Cp, nsteps, plot_interval, spatial_order, splitting_ord
 
     # Compute energy at t=0
     print()
-    print('time = {:8.4f}, energy = {}'.format(t, energy(E, B)))
+    print('time = {:8.4f}, energy = {}'.format(t, energy(dx, E, B)))
 
     # Obtain coefficients for finite difference formulas
     fd_coeffs = finite_difference_coeffs(spatial_order)
@@ -142,7 +142,7 @@ def mol_main(*, L, a, N, Cp, nsteps, plot_interval, spatial_order, splitting_ord
         if i % plot_interval == 0 or i == nsteps-1:
 
             # Compute energy
-            print('time = {:8.4f}, energy = {}'.format(t, energy(E, B)))
+            print('time = {:8.4f}, energy = {}'.format(t, energy(dx, E, B)))
 
             # Update plot
             exact_E = f(t, x_prim)
@@ -156,11 +156,11 @@ def mol_main(*, L, a, N, Cp, nsteps, plot_interval, spatial_order, splitting_ord
     # Error at final time
     exact_E = f(t, x_prim)
     exact_B = f(t, x_dual)
-    error_E = max(exact_E - E)
-    error_B = max(exact_B - B)
+    error_E = max(abs(exact_E - E))
+    error_B = max(abs(exact_B - B))
     print()
-    print('Max error on E(t,x) at final time: {}'.format(error_E))
-    print('Max error on B(t,x) at final time: {}'.format(error_B))
+    print('Max-norm of error on E(t,x) at final time: {}'.format(error_E))
+    print('Max-norm of error on B(t,x) at final time: {}'.format(error_B))
 
     # Return whole namespace as dictionary
     return locals()

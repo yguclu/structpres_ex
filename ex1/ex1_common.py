@@ -64,10 +64,10 @@ def exact_solution(xmin, xmax, a):
     return f
 
 #==============================================================================
-def energy(E, B):
+def energy(dx, E, B):
     """ Compute total energy in domain given the fields E and B.
     """
-    return 0.5 * (np.dot(E, E) + np.dot(B, B))
+    return 0.5 * dx * (np.dot(E, E) + np.dot(B, B))
 
 #==============================================================================
 def print_error_analysis(N_list, err_list):
